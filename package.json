@@ -1,0 +1,29 @@
+{
+  "name": "cf-contentful-ui-country-select",
+  "version": "1.0.0",
+  "description": "Contentful UI extension to easily select countries",
+  "main": "index.js",
+  "engines": {
+    "node": ">=7.6"
+  },
+  "scripts": {
+    "create": "contentful-extension create --space-id ${SPACE_ID}",
+    "update": "contentful-extension update --space-id ${SPACE_ID} --force"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stefanjudis/contentful-ui-country-select.git"
+  },
+  "keywords": [
+    "contentful"
+  ],
+  "author": "stefan judis <stefanjudis@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stefanjudis/contentful-ui-country-select/issues"
+  },
+  "homepage": "https://github.com/stefanjudis/contentful-ui-country-select#readme",
+  "devDependencies": {
+    "contentful-extension-cli": "^2.0.0"
+  }
+}

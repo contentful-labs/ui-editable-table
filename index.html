@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Contentful UI extension country select</title>
+    <link rel="stylesheet" href="https://contentful.github.io/ui-extensions-sdk/cf-extension.css">
+    <script src="https://contentful.github.io/ui-extensions-sdk/cf-extension-api.js"></script>
+    <style>
+      input {
+          border: none;
+          width: 100%;
+          font-size: 14px;
+          padding: 2px;
+          text-align: center;
+      }
+
+      input:hover { background-color: #eee; }
+      input:focus { background-color: #ccf; }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td {
+          border: 1px solid #999;
+          padding: 0;
+      }
+
+      tr:first-child td input {
+          background-color: #ccc;
+          font-weight: bold;
+          text-align: center;
+          user-select: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="content">
+      <table></table>
+    </div>
+    <script>
+      function getInitialData({rows, header}) {
+        const data = [
+          header
+        ];
+        const columns = data[0].length;
+
+        for (let i = 0; i <= rows; i++) {
+          data.push(new Array(data[0].length));
+        }
+
+        return data;
+      }
+
+      function createDOMTable(elem, tableData) {
+        for (let i = 0; i < tableData.length; i++) {
+          let row = elem.insertRow();
+
+          for (let j = 0; j < tableData[0].length; j++) {
+            row.insertCell().innerHTML = `<input data-row="${i}" data-column="${j}" value="${tableData[i][j] || ''}"/>`;
+          }
+        }
+      }
+
+      window.contentfulExtension.init(extension => {
+        let value = extension.field.getValue()
+
+        if (!value) {
+          value = {
+            tableData : getInitialData({
+              rows: 3,
+              header: ['FOO', 'BAR', 'BAZ']
+            })
+          };
+        }
+
+       createDOMTable(document.querySelector('table'), value.tableData);
+
+        window.addEventListener('blur', e => {
+          value.tableData[e.target.dataset.row][e.target.dataset.column] = e.target.value;
+          extension.field.setValue(value);
+        }, true);
+      });
+    </script>
+  </body>
+</html>
