@@ -48,4 +48,4 @@ Update task will upload the extension to your space on Contentful.
 
 Copyright &copy; Contentful Developer Relations
 
-Licensed under the [MIT license](https://github.com/contentful/developer-relations/ui-country-select/blob/master/LICENSE).
+Licensed under the [MIT license](https://github.com/contentful-labs/ui-editable-table/blob/master/LICENSE).
