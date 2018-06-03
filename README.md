@@ -7,8 +7,8 @@ An editable table to handle tabular data as a [Contentful UI Extension](https://
 ## Installation
 
 ```sh
-git clone git@github.com:contentful-developer-relations/ui-country-select.git
-cd ui-country-select
+git clone git@github.com:contentful-labs/ui-editable-table.git
+cd ui-editable-table
 npm install
 ```
 
@@ -17,7 +17,7 @@ npm install
 Create a configuration file with your credentials for Contentful.
 
 ```sh
-cp env.example .env
+cp .env.example .env
 ```
 
 Open `.env` in a editor of your liking and add your Contentful space ID, and management token. [Learn how to obtain a token](https://www.contentful.com/developers/docs/references/authentication/#getting-an-oauth-token).
@@ -48,4 +48,4 @@ Update task will upload the extension to your space on Contentful.
 
 Copyright &copy; Contentful Developer Relations
 
-Licensed under the [MIT license](https://github.com/contentful/developer-relations/ui-country-select/blob/master/LICENSE).
+Licensed under the [MIT license](https://github.com/contentful-labs/ui-editable-table/blob/master/LICENSE).
