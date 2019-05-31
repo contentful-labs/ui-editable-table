@@ -28,10 +28,12 @@ Load environment variables
 source .env
 ```
 
-Adjust the table configuration. Open `index.html`.
+Define the table name, open the `extension.json`
+- Update the `name` and `id` property.
 
-Update the `<title>` tag with the table name.
-Update the `tableData` object with the desired table format.
+Adjust the table configuration.
+- Open `index.html`.
+- Update the `tableData` object with the desired table format.
 
 ```
   tableData : getInitialData({
