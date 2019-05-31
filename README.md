@@ -28,7 +28,10 @@ Load environment variables
 source .env
 ```
 
-Adjust the table configuration. Open `index.html` and adjust the `tableData` object.
+Adjust the table configuration. Open `index.html`.
+
+Update the `<title>` tag with the table name.
+Update the `tableData` object with the desired table format.
 
 ```
   tableData : getInitialData({
