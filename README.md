@@ -28,6 +28,15 @@ Load environment variables
 source .env
 ```
 
+Adjust the table configuration. Open `index.html` and adjust the `tableData` object.
+
+```
+  tableData : getInitialData({
+    rows: 3,
+    header: ['FOO', 'BAR', 'BAZ']
+  })
+```
+
 ### Create
 
 ```sh
