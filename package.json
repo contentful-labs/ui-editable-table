@@ -7,8 +7,8 @@
     "node": ">=7.6"
   },
   "scripts": {
-    "create": "contentful-extension create --space-id ${SPACE_ID}",
-    "update": "contentful-extension update --space-id ${SPACE_ID} --force"
+    "create": "contentful-extension create --space-id ${SPACE_ID} --id ${ENVIRONMENT_ID}",
+    "update": "contentful-extension update --space-id ${SPACE_ID} --id ${ENVIRONMENT_ID} --force"
   },
   "repository": {
     "type": "git",
