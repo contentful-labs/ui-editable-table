@@ -1,5 +1,13 @@
 # Contentful Editable Table UI Extension
 
+❗ Disclaimer
+=====
+
+**This project is not actively maintained or monitored.** Feel free to fork and work on it in your account. If you want to maintain but also collaborate with fellow developers, feel free to reach out to [Contentful's Developer Relations](mailto:devrel-mkt@contentful.com) team to move the project into our community GitHub organisation [contentful-userland](https://github.com/contentful-userland/).
+
+-----
+
+
 An editable table to handle tabular data as a [Contentful UI Extension](https://www.contentful.com/developers/docs/concepts/uiextensions/).
 
 ![figure](https://raw.githubusercontent.com/contentful-developer-relations/ui-editable-table/master/demo.gif "Editable table as Contentful UI Extension demo")
