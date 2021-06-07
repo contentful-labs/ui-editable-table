@@ -36,6 +36,20 @@ Load environment variables
 source .env
 ```
 
+Define the table name, open the `extension.json`
+- Update the `name` and `id` property.
+
+Adjust the table configuration.
+- Open `index.html`.
+- Update the `tableData` object with the desired table format.
+
+```
+  tableData : getInitialData({
+    rows: 3,
+    header: ['FOO', 'BAR', 'BAZ']
+  })
+```
+
 ### Create
 
 ```sh
