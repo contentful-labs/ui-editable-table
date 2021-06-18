@@ -2,10 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8"/>
-    <title>Contentful UI extension country select</title>
+    <title>Contentful UI extension table field</title>
     <link rel="stylesheet" href="https://contentful.github.io/ui-extensions-sdk/cf-extension.css">
     <script src="https://contentful.github.io/ui-extensions-sdk/cf-extension-api.js"></script>
     <style>
+      select {
+        margin-bottom: 1em;
+      }
+      
       input {
           border: none;
           width: 100%;
@@ -46,14 +50,42 @@
         ];
         const columns = data[0].length;
 
-        for (let i = 0; i <= rows; i++) {
+        for (let i = 0; i < rows; i++) {
           data.push(new Array(data[0].length));
         }
 
         return data;
       }
+      
+      function alterData(data) {
+        if (document.querySelector('#rows').value < data.length) {
+      		data.length = document.querySelector('#rows').value;
+        }
+        else {
+          for (let i = data.length; i < document.querySelector('#rows').value; i++) {
+            data.push(new Array());
+          }
+        }
+        
+        for (let i = 0; i < data.length; i++) {
+          if (document.querySelector('#columns').value < data[i].length) {
+            data[i].length = document.querySelector('#columns').value;
+          }
+          else {
+            for (let j = data[i].length; j < document.querySelector('#columns').value; j++) {
+              data[i].push('');
+            }
+          }
+        }
+        
+        return data;
+      }
 
       function createDOMTable(elem, tableData) {
+        while(elem.rows.length > 0) {
+          elem.deleteRow(0);
+        }
+
         for (let i = 0; i < tableData.length; i++) {
           let row = elem.insertRow();
 
@@ -69,13 +101,41 @@
         if (!value) {
           value = {
             tableData : getInitialData({
-              rows: 3,
-              header: ['FOO', 'BAR', 'BAZ']
+              rows: 2,
+              header: ['FOO', 'BAR']
             })
           };
         }
 
        createDOMTable(document.querySelector('table'), value.tableData);
+        
+        let selectTypes = ['rows', 'columns'];
+        for (selectType in selectTypes) { 
+          let selectElement = document.createElement('select');
+          selectElement.id = selectTypes[selectType];
+          for (var i = 1; i<=100; i++){
+            var opt = document.createElement('option');
+            opt.value = i;
+            opt.innerHTML = i + ' ' + selectElement.id;
+            selectElement.appendChild(opt);
+          }
+          if (selectTypes[selectType] == 'rows') {
+            selectElement.value = value.tableData.length;
+          }
+          else {
+            selectElement.value = value.tableData[0].length;
+          }
+          selectElement.addEventListener('change', e => {
+            value = { 
+              tableData : alterData(value.tableData)
+            };
+            createDOMTable(document.querySelector('table'), value.tableData);
+            extension.window.updateHeight();
+            extension.field.setValue(value);
+          }, true);
+          document.body.insertBefore(selectElement, document.body.childNodes[0]);
+          extension.window.updateHeight();
+        }
 
         window.addEventListener('blur', e => {
           value.tableData[e.target.dataset.row][e.target.dataset.column] = e.target.value;
